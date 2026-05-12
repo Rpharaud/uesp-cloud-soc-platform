@@ -1,7 +1,3 @@
-
-## `TESTPLAN.md`
-
-```markdown
 # TEST PLAN
 
 ## Purpose
