@@ -118,7 +118,6 @@ Examples:
 
 Each test should use the following format:
 
-```markdown
 ## Test ID
 
 ### Objective
