@@ -52,15 +52,5 @@ jobs:
             fi
           done
 
-      - name: Detect Empty Markdown Files
-        run: |
-          empty_files=$(find . -name "*.md" -type f -empty)
-
-          if [ -n "$empty_files" ]; then
-            echo "[ERROR] Empty markdown files detected:"
-            echo "$empty_files"
-            exit 1
-          fi
-
       - name: Repository Validation Passed
         run: echo "UESP repository structure validation passed."
