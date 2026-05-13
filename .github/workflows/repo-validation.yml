@@ -24,6 +24,9 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v4
 
+      - name: Terraform Init
+        run: terraform -chdir=terraform init
+
       - name: Terraform Format Check
         run: terraform fmt -check terraform/
 
