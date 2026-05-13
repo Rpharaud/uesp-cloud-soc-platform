@@ -51,7 +51,7 @@ Planned technologies include:
 
 ## Current Phase
 
-**Phase 0 — Planning, Architecture, and Engineering Foundation**
+## Phase 0 — Planning, Architecture, and Engineering Foundation
 
 Current focus:
 

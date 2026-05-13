@@ -121,28 +121,37 @@ Each test should use the following format:
 ## Test ID
 
 ### Objective
+
 What is being tested?
 
 ### Category
+
 Functional / Security / Edge Case / Failure / Adversarial / Recovery
 
 ### Preconditions
+
 What must exist before the test?
 
 ### Procedure
+
 Step-by-step actions.
 
 ### Expected Result
+
 What should happen?
 
 ### Actual Result
+
 What actually happened?
 
 ### Evidence
+
 Screenshots, logs, command output, findings.
 
 ### Status
+
 Pass / Fail / Needs Review
 
 ### Notes
+
 Lessons learned or follow-up actions.

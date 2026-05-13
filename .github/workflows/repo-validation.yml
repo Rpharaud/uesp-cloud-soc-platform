@@ -15,6 +15,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v5
 
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Run Markdown Lint
+        run: markdownlint "**/*.md"
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Format Check
+        run: terraform fmt -check terraform/
+
+      - name: Terraform Validation
+        run: terraform -chdir=terraform validate
+
       - name: Verify Required Directories
         run: |
           required_dirs=(
@@ -51,6 +66,18 @@ jobs:
               exit 1
             fi
           done
+
+      - name: Validate Naming Conventions
+        run: |
+          invalid_names=$(find . \
+            | grep -E '[A-Z ]' \
+            | grep -vE '^\./(\.git|README.md|DESIGN.md|THEORY.md|TESTPLAN.md|RISKS.md|IMPLEMENTATION.md|EVIDENCE.md|DETECTIONS.md)$')
+
+          if [ -n "$invalid_names" ]; then
+            echo "[ERROR] Invalid file or directory naming detected:"
+            echo "$invalid_names"
+            exit 1
+          fi
 
       - name: Repository Validation Passed
         run: echo "UESP repository structure validation passed."
