@@ -1,0 +1,26 @@
+# Terraform
+terraform/.terraform/
+*.tfstate
+*.tfstate.backup
+crash.log
+
+# Terraform variable files
+*.tfvars
+*.tfvars.json
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Environment files
+.env
+.env.*
