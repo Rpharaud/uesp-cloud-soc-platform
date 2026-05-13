@@ -1,0 +1,66 @@
+name: Repository Validation
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  validate-repository:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Required Directories
+        run: |
+          required_dirs=(
+            "configs"
+            "docs"
+            "evidence"
+            "scripts"
+            "terraform"
+          )
+
+          for dir in "${required_dirs[@]}"; do
+            if [ ! -d "$dir" ]; then
+              echo "[ERROR] Missing required directory: $dir"
+              exit 1
+            fi
+          done
+
+      - name: Verify Required Markdown Files
+        run: |
+          required_files=(
+            "README.md"
+            "DESIGN.md"
+            "THEORY.md"
+            "TESTPLAN.md"
+            "RISKS.md"
+            "IMPLEMENTATION.md"
+            "EVIDENCE.md"
+            "DETECTIONS.md"
+          )
+
+          for file in "${required_files[@]}"; do
+            if [ ! -f "$file" ]; then
+              echo "[ERROR] Missing required file: $file"
+              exit 1
+            fi
+          done
+
+      - name: Detect Empty Markdown Files
+        run: |
+          empty_files=$(find . -name "*.md" -type f -empty)
+
+          if [ -n "$empty_files" ]; then
+            echo "[ERROR] Empty markdown files detected:"
+            echo "$empty_files"
+            exit 1
+          fi
+
+      - name: Repository Validation Passed
+        run: echo "UESP repository structure validation passed."
