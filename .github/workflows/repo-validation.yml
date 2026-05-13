@@ -69,17 +69,24 @@ jobs:
 
       - name: Validate Naming Conventions
         run: |
+          echo "[INFO] Checking repository naming conventions..."
+
           invalid_names=$(find . \
             -not -path "./.git/*" \
             -not -path "./node_modules/*" \
             | grep -E '[A-Z ]' \
-            | grep -vE '^\./(README|DESIGN|THEORY|TESTPLAN|RISKS|IMPLEMENTATION|EVIDENCE|DETECTIONS)\.md$')
+            | grep -vE '^\./(README|DESIGN|THEORY|TESTPLAN|RISKS|IMPLEMENTATION|EVIDENCE|DETECTIONS)\.md$' \
+            || true)
+
+          echo "[DEBUG] Invalid names detected:"
+          echo "$invalid_names"
 
           if [ -n "$invalid_names" ]; then
-            echo "[ERROR] Invalid file or directory naming detected:"
-            echo "$invalid_names"
+            echo "[ERROR] Invalid file or directory naming detected."
             exit 1
           fi
+
+          echo "[INFO] Naming convention validation passed."
 
       - name: Repository Validation Passed
         run: echo "UESP repository structure validation passed."
