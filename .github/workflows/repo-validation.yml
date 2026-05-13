@@ -22,7 +22,7 @@ jobs:
         run: markdownlint "**/*.md"
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+        uses: hashicorp/setup-terraform@v4
 
       - name: Terraform Format Check
         run: terraform fmt -check terraform/
@@ -70,8 +70,10 @@ jobs:
       - name: Validate Naming Conventions
         run: |
           invalid_names=$(find . \
+            -not -path "./.git/*" \
+            -not -path "./node_modules/*" \
             | grep -E '[A-Z ]' \
-            | grep -vE '^\./(\.git|README.md|DESIGN.md|THEORY.md|TESTPLAN.md|RISKS.md|IMPLEMENTATION.md|EVIDENCE.md|DETECTIONS.md)$')
+            | grep -vE '^\./(README|DESIGN|THEORY|TESTPLAN|RISKS|IMPLEMENTATION|EVIDENCE|DETECTIONS)\.md$')
 
           if [ -n "$invalid_names" ]; then
             echo "[ERROR] Invalid file or directory naming detected:"
