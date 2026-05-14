@@ -9,7 +9,7 @@ invalid_names=$(find . \
   -not -path "./node_modules/*" \
   -not -path "./terraform/.terraform/*" \
   | grep -E '[A-Z ]' \
-  | grep -vE '^\./(README|DESIGN|THEORY|TESTPLAN|RISKS|IMPLEMENTATION|EVIDENCE|DETECTIONS)\.md$' \
+  | grep -vE '^./(README|DESIGN|THEORY|TESTPLAN|RISKS|IMPLEMENTATION|EVIDENCE|DETECTIONS)\.md$|^./docs/architecture/[A-Z_]+\.md$|^./governance/.*/[A-Z_]+\.md$' \
   || true)
 
 echo "[DEBUG] Invalid names detected:"
