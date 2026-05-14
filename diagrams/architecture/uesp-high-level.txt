@@ -1,0 +1,33 @@
+                    +----------------------+
+                    | External Traffic     |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Sensor Layer         |
+                    | Zeek / Suricata      |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Enrichment Layer     |
+                    | TI / OSINT / Context |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Detection Layer      |
+                    | Rules / Correlation  |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Storage & Indexing   |
+                    | Elasticsearch        |
+                    +----------+-----------+
+                               |
+                               v
+                    +----------------------+
+                    | Visualization/SOAR   |
+                    | Dashboards/Response  |
+                    +----------------------+

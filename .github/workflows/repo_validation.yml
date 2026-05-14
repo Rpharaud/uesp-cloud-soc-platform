@@ -1,0 +1,55 @@
+name: Repository Validation
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  validate-repository:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Make Validation Scripts Executable
+        run: find scripts/validation -type f -name "*.sh" -exec chmod +x {} \;
+
+      - name: Run Required Document Checks
+        run: ./scripts/validation/ci/check_required_docs.sh
+
+      - name: Run Required Directory Checks
+        run: ./scripts/validation/ci/check_required_dirs.sh
+
+      - name: Run Forbidden File Checks
+        run: ./scripts/validation/policies/check_forbidden_files.sh
+
+      - name: Run Naming Convention Checks
+        run: ./scripts/validation/policies/check_naming_conventions.sh
+
+      - name: Run Evidence Structure Checks
+        run: ./scripts/validation/evidence/check_evidence_structure.sh
+
+      - name: Markdown Validation
+        run: ./scripts/validation/ci/check_markdown.sh
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v4
+
+      - name: Terraform Init
+        run: terraform -chdir=terraform init
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive terraform/
+
+      - name: Terraform Validation
+        run: terraform -chdir=terraform validate
+
+      - name: Repository Validation Passed
+        run: echo "UESP repository structure validation passed."
