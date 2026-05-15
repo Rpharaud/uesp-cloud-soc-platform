@@ -3,24 +3,30 @@
 ## Lifecycle States
 
 ### Draft
+
 Initial planning and structure definition.
 
 ### In Progress
+
 Engineering implementation actively underway.
 
 ### Validation
+
 Testing, verification, and evidence collection occurring.
 
 ### Review
+
 Documentation, operational review, and governance checks.
 
 ### Complete
+
 Phase requirements satisfied and approved.
 
 ### Archived
+
 Deprecated or superseded phase.
 
-# Advancement Requirements
+## Advancement Requirements
 
 A phase may only advance when:
 

@@ -5,15 +5,14 @@
 This document defines the detection engineering standards for UESP.
 
 The objective is to ensure:
+
 - Consistency
 - Portability
 - Validation integrity
 - Governance alignment
 - Operational maintainability
 
----
-
-# Detection Categories
+## Detection Categories
 
 Supported detection categories include:
 
@@ -25,9 +24,7 @@ Supported detection categories include:
 - Behavioral analytics
 - Threat intelligence matching
 
----
-
-# Required Detection Metadata
+## Required Detection Metadata
 
 All detections should include:
 
@@ -42,20 +39,16 @@ All detections should include:
 - False positive considerations
 - Validation guidance
 
----
-
-# Severity Classification
+## Severity Classification
 
 | Severity | Description |
-|---|---|
+| --- | --- |
 | Critical | Active exploitation or severe compromise |
 | High | Strong malicious indicators |
 | Medium | Suspicious activity requiring investigation |
 | Low | Informational or low-confidence findings |
 
----
-
-# Detection Lifecycle
+## Detection Lifecycle
 
 Detections follow the lifecycle:
 

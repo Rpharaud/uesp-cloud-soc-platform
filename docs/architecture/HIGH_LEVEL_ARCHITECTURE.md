@@ -12,9 +12,7 @@ security operations and detection engineering platform designed to support:
 - Governance and validation
 - Evidence-driven operational workflows
 
----
-
-# Core Architectural Principles
+## Core Architectural Principles
 
 - Modular design
 - Infrastructure as Code (IaC)
@@ -24,74 +22,68 @@ security operations and detection engineering platform designed to support:
 - Automation-centric workflows
 - Cloud-ready deployment model
 
----
+## Core Platform Components
 
-# Core Platform Components
-
-## Sensor Layer
+### Sensor Layer
 
 Responsible for telemetry generation and traffic visibility.
 
 Examples:
+
 - Zeek
 - Suricata
 - Future cloud-native telemetry sources
 
----
-
-## Enrichment Layer
+### Enrichment Layer
 
 Responsible for contextualizing raw telemetry.
 
 Examples:
+
 - Threat intelligence
 - OSINT enrichment
 - Reputation scoring
 - Context tagging
 
----
-
-## Detection Layer
+### Detection Layer
 
 Responsible for identifying malicious or suspicious activity.
 
 Examples:
+
 - Sigma detections
 - Suricata signatures
 - Zeek detections
 - Correlation logic
 - Behavioral analytics
 
----
-
-## Storage and Indexing Layer
+### Storage and Indexing Layer
 
 Responsible for telemetry retention, indexing, and querying.
 
 Potential technologies:
+
 - Elasticsearch
 - OpenSearch
 - Object storage
 
----
-
-## Automation Layer
+### Automation Layer
 
 Responsible for orchestration, validation, and operational automation.
 
 Examples:
+
 - CI/CD pipelines
 - Detection validation
 - Evidence collection
 - Infrastructure validation
 
----
-
-## Visualization and Response Layer
+### Visualization and Response Layer
 
 Responsible for analyst workflows and operational visibility.
 
 Examples:
+
 - Dashboards
 - Alert triage
 - SOAR integrations
