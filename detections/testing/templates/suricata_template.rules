@@ -1,0 +1,15 @@
+# Rule Metadata
+# Description:
+# Detection Domain:
+# Detection Methodology:
+# Severity:
+# ATT&CK Technique:
+# Author:
+# Date:
+# References:
+
+action protocol source_ip source_port -> destination_ip destination_port (
+    msg:"";
+    sid:;
+    rev:;
+)

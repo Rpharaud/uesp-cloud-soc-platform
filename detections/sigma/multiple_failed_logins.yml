@@ -1,0 +1,23 @@
+title: Multiple Failed Login Attempts
+id: 1qaz-2wsx-3edc-4rfv
+status: test
+description: Detects when there have been multiple failed login attempts
+author: Reggie Pharaud
+date: 2026-05-15
+references: 
+logsource:
+  product: aws
+  service: cloudtrail
+  definition: Syslog must be enabled.
+detection:
+  selection:
+    eventName: Consolelogin
+    errorMessage: "Failed authentication"
+  condition: selection
+falsepositives:
+  - Potential credential error
+level: medium
+tags:
+  # MITRE ATT&CK framework reference
+  - attack.credential_access
+  - attack.t1110

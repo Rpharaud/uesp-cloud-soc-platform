@@ -1,0 +1,15 @@
+# Rule Metadata
+# Description: Suspicious User-Agent Identified
+# Detection Domain: Network
+# Detection Methodology: Signature Based
+# Severity: High
+# ATT&CK Technique: T1036.012
+# Author: Reggie Pharaud
+# Date: 2026-05-15
+# References: https://attack.mitre.org/techniques/T1036/012/
+
+drop http $HOME_NET any -> $EXTERNAL_NET any (
+    msg:"Suspicious User-Agent Identified";
+    sid:123;
+    rev:1;
+)
