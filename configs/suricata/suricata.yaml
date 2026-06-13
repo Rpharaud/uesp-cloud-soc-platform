@@ -1,0 +1,23 @@
+# UESP Suricata baseline configuration
+
+vars:
+  address-groups:
+    HOME_NET: "[10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+    EXTERNAL_NET: "!$HOME_NET"
+
+outputs:
+  - eve-log:
+      enabled: yes
+      filetype: regular
+      filename: eve.json
+      types:
+        - alert
+        - dns
+        - http
+        - tls
+        - flow
+        - fileinfo
+
+default-rule-path: /etc/suricata/rules
+rule-files:
+  - suspicious_user_agent.rules
